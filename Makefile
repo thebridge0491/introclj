@@ -5,7 +5,7 @@ help:
 #MAKE = make # (GNU make variants: make (Linux) gmake (FreeBSD)
 
 parent = introclj
-SUBDIRS = common app
+SUBDIRS = common foreignc api app
 
 .PHONY: all clean compile help install test
 help: $(SUBDIRS)

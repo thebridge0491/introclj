@@ -15,12 +15,6 @@
     [org.clojure/clojure "1.5.1"]
     [org.clojure/tools.reader "0.8.3"]
     [org.clojure/tools.logging "0.2.6"]
-        
-    [org.slf4j/slf4j-api "1.7.6"]
-    ;[net.java.dev.jna/jna "4.0.0"]
-      
-    ;[org.slf4j/log4j-over-slf4j "1.7.6"]
-    ;[ch.qos.logback/logback-classic "1.1.1"]
     ]
     :profiles {
       :test {:dependencies [[org.clojure/test.check "0.5.7"]]}
@@ -30,8 +24,6 @@
       [lein-autodoc "0.9.0"] [lein-cloverage "1.0.2"]
 		]
     ;:offline? true
-    
-    ;:main org.sandbox.introclj.util.Main
     
     :aot [org.sandbox.introclj.util.core]
     :javac-options ["-Xlint:all" "-deprecation" "-g"]
@@ -76,7 +68,6 @@
             [:testSourceDirectories [:testSourceDirectory "src/test/clj"]]
           )
           :extensions "true"
-          ;:mainClass "org.sandbox.introclj.util.Main"
           }]
 		]
     ;:pom-addition [:packaging "clojure"]

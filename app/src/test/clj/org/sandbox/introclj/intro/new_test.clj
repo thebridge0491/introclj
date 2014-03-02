@@ -1,11 +1,5 @@
 (in-ns 'org.sandbox.introclj.intro.core-test)
 
-(defn in-epsilon
-    [tolerance a b]
-    (let [delta (Math/abs tolerance)]
-        ;(and (<= (- a delta) b) (>= (+ a delta) b))))
-        (and (not (< (+ a delta) b)) (not (< (+ b delta) a)))))
-
 (defn class-fixture1
     "Class setUp/tearDown"
     [func]
@@ -30,7 +24,7 @@
 (test/deftest test-dblMethod
     "test-dblMethod"
     ;(test/is (= 100.0 100.0))
-    (test/is (in-epsilon (* 0.001 100.0) 100.0 100.0))
+    (test/is (util/in-epsilon (* 0.001 100.0) 100.0 100.0))
     )
 
 (test/deftest test-strMethod

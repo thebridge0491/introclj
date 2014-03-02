@@ -1,11 +1,5 @@
 (in-ns 'org.sandbox.introclj.util.core-test)
 
-(defn in-epsilon
-    [tolerance a b]
-    (let [delta (Math/abs tolerance)]
-        ;(and (<= (- a delta) b) (>= (+ a delta) b))))
-        (and (not (< (+ a delta) b)) (not (< (+ b delta) a)))))
-
 (defn genTup2Int
     [gen0 gen1]
     (gen/tuple gen0 gen1))

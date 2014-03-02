@@ -6,6 +6,9 @@
         [clojure.test.check.properties :as prop]
         [clojure.test.check.clojure-test :as testqc]
         )
+    (:require
+        [org.sandbox.introclj.util.core :as util]
+        )
     (:gen-class))
 
 (comment
@@ -19,7 +22,7 @@
 )
 
 (def paths [
-    "new_test" "new_prop" ;"classic_test" "classic_prop"
+    "new_test" "new_prop"
     ])
 (doseq [filenm paths] (load filenm))
 

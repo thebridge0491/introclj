@@ -18,16 +18,15 @@
     [org.clojure/tools.cli "0.3.1"]
         
     [org.slf4j/slf4j-api "1.7.6"]
-    ;[net.java.dev.jna/jna "4.0.0"]
       
-    ;[org.slf4j/log4j-over-slf4j "1.7.6"]
     [ch.qos.logback/logback-classic "1.1.1"]
     [org.ini4j/ini4j "0.5.2"]
     [org.clojure/data.json "0.2.4"]
     [javax.json/javax.json-api "1.0"]
     [org.glassfish/javax.json "1.0.4"]
     [org.yaml/snakeyaml "1.13"]
-    ;[org.sandbox/introclj.util "0.1.0"]
+    [org.sandbox/introclj.util "0.1.0"]
+    [org.sandbox/introclj.practice "0.1.0"]
     ]
     :profiles {
       :test {:dependencies [[org.clojure/test.check "0.5.7"]]}

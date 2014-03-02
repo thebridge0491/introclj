@@ -107,11 +107,6 @@
       <version>0.2.6</version>
     </dependency>
     <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
-      <version>1.7.6</version>
-    </dependency>
-    <dependency>
       <groupId>org.clojure</groupId>
       <artifactId>test.check</artifactId>
       <version>0.5.7</version>

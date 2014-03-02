@@ -91,13 +91,13 @@
     <!--<exclude org = 'org.clojure' module = 'clojure'/>-->
     <!--<exclude org = 'org.clojure' module = 'tools.reader'/>-->
     <!--<exclude org = 'org.clojure' module = 'tools.logging'/>-->
-    <!--<exclude org = 'org.clojure' module = 'tools.cli'/>-->
-    <!--<exclude org = 'org.clojure' module = 'data.json'/>-->
+    <exclude org = 'org.clojure' module = 'tools.cli'/>
+    <exclude org = 'org.clojure' module = 'data.json'/>
     <exclude org = 'junit' module = 'junit'/>
     <exclude org = 'org.testng' module = 'testng'/>
     <!--<exclude org = 'org.clojure' module = 'test.check'/>-->
     <exclude org = 'org.slf4j' module = 'log4j-over-slf4j'/>
-    <!--<exclude org = 'ch.qos.logback' module = 'logback-classic'/>-->
+    <exclude org = 'ch.qos.logback' module = 'logback-classic'/>
     <exclude org = 'org.ini4j' module = 'ini4j'/>
     <exclude org = 'net.java.dev.jna' module = 'jna'/>
     <exclude org = 'javax.json' module = 'javax.json-api'/>
