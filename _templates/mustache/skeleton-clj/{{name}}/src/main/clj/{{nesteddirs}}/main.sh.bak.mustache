@@ -1,0 +1,11 @@
+":"; exec java -Djna.library.path=$HOME/.local/lib -cp `cat target/classpath_runtime.txt` clojure.main $0 $@
+":"; exit
+;#!/usr/bin/env clojure
+
+;(load-file (str (-> (java.io.File. (-> (java.io.File. *file*) .getAbsolutePath)) .getParent) "/Main.clj"))
+(require
+	'[{{namespace}}{{^namespace}}org.sandbox.introclj.util{{/namespace}}.Main]
+	)
+(in-ns '{{namespace}}{{^namespace}}org.sandbox.introclj.util{{/namespace}}.Main)
+
+(apply -main *command-line-args*)

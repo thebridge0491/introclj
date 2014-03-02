@@ -1,0 +1,36 @@
+{
+  "groupid": "org.sandbox",
+  "category": false,
+  "parent": "intro_java",
+  "parentdescription": "Multi-package project Intro examples for Java.",
+  "project": "util",
+  "description": "Utilites sub-package for Java Intro examples project.",
+  "version": "0.1.0",
+  "separator": "-",
+  "joiner": "-",
+  "parentregex": "^[a-z][_a-z0-9]+$",
+  "projectregex": "^[a-z][a-z0-9]+$",
+  
+  "repohost": "bitbucket.org",
+  "repoacct": "imcomputer",
+  "date": "2012-12-10",
+  
+  "readmeext": ".rst",
+  "license": "Apache-2.0",
+  "buildtool": "gradle",
+  "testfrwk": "junit",
+  
+  "ffilib": "none",
+  
+  "skeletondir": "Templates/mustache/skeleton-java",
+  
+  "_choices": {
+    "readmeext": [".rst", ".md", ".adoc"],
+    "license": ["Apache-2.0", "MIT", "BSD-3-Clause", "GPL-3.0+", "ISC", 
+      "Unlicense", "Not open source"],
+    "buildtool": ["gradle", "maven", "ant", "rake", "make", "sbt"],
+    "testfrwk": ["junit", "testng"],
+    "executable": [false, "yes"],
+    "ffilib": ["none", "jna", "swig"]
+  }
+}

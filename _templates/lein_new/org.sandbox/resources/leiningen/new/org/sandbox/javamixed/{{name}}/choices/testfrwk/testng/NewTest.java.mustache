@@ -1,0 +1,74 @@
+package {{namespace}}{{^namespace}}org.sandbox.intro_java.util{{/namespace}};
+
+import org.testng.annotations.Test;
+import static org.testng.Assert.*;
+
+public class NewTest {
+	//private float tolerance = 2.0f * Float.MIN_VALUE;
+	private float epsilon = 1.0e-7f;
+	
+    public NewTest() {
+    }
+    
+    public Boolean in_epsilon(Float tolerance, Float a, Float b) {
+		Float delta = Math.abs(tolerance);
+		//return (a - delta) <= b && (a + delta) >= b;
+		return !((a + delta) < b) && !((b + delta) < a);
+	}
+
+    @org.testng.annotations.BeforeClass
+    public static void setUpClass() throws Exception {
+    	System.err.println("###setup TestCase###");
+    }
+    @org.testng.annotations.AfterClass
+    public static void tearDownClass() throws Exception {
+    	System.err.println("###teardown TestCase###");
+    }
+    
+    @org.testng.annotations.BeforeMethod
+    public void setUp() {
+    	System.err.println("setup Test ...");
+    }
+    @org.testng.annotations.AfterMethod
+    public void tearDown() {
+    	System.err.println("... teardown Test");
+    }
+    
+    @Test
+    public void test_classExists() {
+        try {
+            Class.forName(String.format("%s.Library",
+                this.getClass().getPackage().getName()));
+        } catch(ClassNotFoundException exc) {
+            //fail("Class(es) not existent: " + Library.class.getName());
+            fail(String.format("%s %s", "Class(es) not existent:",
+                java.util.Arrays.toString(new String[]{
+                Library.class.getName()})));
+        }
+    }
+    
+	@Test
+    public void test_method() { assertEquals(4, 2 * 2);
+    }
+    @Test
+    public void test_dblMethod() {
+		//assertEquals(100.001f, 100.001f, epsilon);
+		assertTrue(in_epsilon(epsilon, 100.001f, 100.001f));
+    }
+    @Test
+    public void test_strMethod() { assertEquals("Hello", "Hello");
+    }
+    @Test(timeOut = 1000)
+    public void test_timeoutMethod() { for (int i = 0; 1.0e6f > i; ++i);
+    }
+    @Test(enabled = false)
+    public void test_ignoredMethod() { assertEquals(5, 2 * 2);
+    }
+    @Test //(expectedExceptions = AssertionError.class)
+    public void test_failMethod() { fail();
+    }
+    @Test(expectedExceptions = IllegalArgumentException.class)
+    public void test_exceptionMethod() {
+        throw new IllegalArgumentException();
+    }
+}

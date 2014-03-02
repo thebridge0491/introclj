@@ -1,0 +1,45 @@
+# {{parentcap}}{{^parentcap}}Introclj{{/parentcap}}{{joiner}}{{^joiner}}.{{/joiner}}{{projectcap}}{{^projectcap}}Util{{/projectcap}}
+<!-- .md to .html: markdown foo.md > foo.html
+                   pandoc -s -f markdown_strict -t html5 -o foo.html foo.md -->
+
+{{description}}{{^description}}Utilities sub-package for Clojure Intro examples project.{{/description}}
+
+## Installation
+source code tarball download:
+    
+        # [aria2c --check-certificate=false | wget --no-check-certificate | curl -kOL]
+        FETCHCMD='aria2c --check-certificate=false'
+        $FETCHCMD https://{{repohost}}{{^repohost}}bitbucket.org{{/repohost}}/{{repoacct}}{{^repoacct}}imcomputer{{/repoacct}}/{{parent}}{{^parent}}introclj{{/parent}}/[get | archive]/master.zip
+
+version control repository clone:
+        
+        git clone https://{{repohost}}{{^repohost}}bitbucket.org{{/repohost}}/{{repoacct}}{{^repoacct}}imcomputer{{/repoacct}}/{{parent}}{{^parent}}introclj{{/parent}}.git
+
+build example with maven:
+cd <path> ; mvn [-Djava.library.path=$PREFIX/lib] compile [test]
+mvn install
+
+build example with leiningen:
+cd <path> ; [JVM_OPTS="-Djava.library.path=$PREFIX/lib"] lein compile [test]
+lein install
+
+## Usage
+{{#executable}}
+        [env RSRC_PATH=<path>/resources] java -jar {{name}}{{^name}}introclj.util{{/name}}-<version>.jar [-h]
+{{/executable}}
+{{^executable}}
+        // PKG_CONFIG='pkg-config --with-path=$PREFIX/lib/pkgconfig'
+        // $PKG_CONFIG --cflags --libs <ffi-lib>
+        // java [-Djava.library.path=$PREFIX/lib] ...
+        
+        (require '[{{namespace}}{{^namespace}}org.sandbox.introclj.util{{/namespace}}.core :as core])
+        ...
+        (let [xs (list 0 1 2) ys (list 10 20 30)] 
+			(core/cartesian-prod xs ys))
+{{/executable}}
+
+## Author/Copyright
+Copyright (c) {{year}}{{^year}}2014{{/year}} by {{author}}{{^author}}{{repoacct}}{{^repoacct}}imcomputer{{/repoacct}}{{/author}} <{{email}}{{^email}}{{repoacct}}{{^repoacct}}imcomputer{{/repoacct}}-codelab@yahoo.com{{/email}}>
+
+## License
+Licensed under the {{license}}{{^license}}Apache-2.0{{/license}} License. See LICENSE for details.

@@ -1,0 +1,39 @@
+package {{namespace}}{{^namespace}}org.sandbox.intro_java.util{{/namespace}};
+
+public class Ts_Main {
+    public static void main(String[] args) {
+        if (1 > args.length) {
+            org.testng.TestNG testng = new org.testng.TestNG();
+            java.util.List<org.testng.xml.XmlSuite> suite = 
+				new java.util.ArrayList<org.testng.xml.XmlSuite>();
+			java.io.InputStream istrm;
+			try {
+				try {
+					istrm = Ts_Main.class.getResourceAsStream(
+						"/testng.xml");
+					suite = new org.testng.xml.Parser(istrm).parseToList();
+					istrm.close();
+				} catch (java.io.IOException exc0) {
+					try {
+						suite = new org.testng.xml.Parser(
+							"src/test/resources/testng.xml").parseToList();
+					} catch (java.io.IOException exc1) {
+						exc0.printStackTrace();
+						exc1.printStackTrace();
+						System.exit(1);
+					}
+				}
+				testng.setOutputDirectory("build/test-output");
+				testng.setXmlSuites(suite);
+				testng.run();
+			} catch (javax.xml.parsers.ParserConfigurationException exc) {
+				exc.printStackTrace();
+			} catch (org.xml.sax.SAXException exc) {
+				exc.printStackTrace();
+			} catch (Exception exc) {
+				exc.printStackTrace();
+			}
+        } else
+			org.testng.TestNG.main(args);
+    }
+}

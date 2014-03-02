@@ -1,0 +1,28 @@
+# mvn archetype:create-from-project [-Darchetype.groupId=org.sandbox -Darchetype.artifactId=clojuremixed-archetype -Darchetype.version=0.1.0] [-Darchetype.languages=clj,java -Darchetype.filteredExtentions=clj,java,..] -Darchetype.properties=archetype.properties
+# cd target/generated-sources/archetype
+
+# cp pom.xml src/main/resources/ ; mvn install
+
+parent=introclj
+parentdescription=Parent description for multi-package project mixed Clojure.
+name=clojuremixed
+description=A Maven archetype template for mixed Clojure project.
+
+repohost=bitbucket.org
+repoacct=imrepoid
+author=imcomputer
+email=imemail-codelab@yahoo.com
+date=2014-03-01
+
+#archetype.groupId=org.sandbox
+#archetype.artifactId=clojuremixed-archetype
+#archetype.version=0.1.0
+archetype.languages=clj,java
+archetype.filteredExtensions=clj,java,i,rst,md,adoc,txt,xml,bak,mk
+
+# example usage of archetype:
+#   cd <path> ; mvn archetype:generate [-DinteractiveMode=false]
+#     -DarchetypeCatalog=local -DarchetypeGroupId=org.sandbox
+#     -DarchetypeArtifactId=clojuremixed-archetype -Ddate=2014-03-01
+#     -DgroupId=org.sandbox -Dparent=introclj -Dname=util -Dversion=0.1.0
+#     [-DtestFrwk=clojure.test -DffiLib=none -Dexecutable=no]

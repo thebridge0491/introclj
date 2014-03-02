@@ -1,0 +1,20 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+":"; exec java -Djna.library.path=${symbol_dollar}HOME/.local/lib -cp `cat target/classpath_test.txt` clojure.main ${symbol_dollar}0 ${symbol_dollar}@
+":"; exit
+;${symbol_pound}!/usr/bin/env clojure
+
+;(load-file (str (-> (java.io.File. (-> (java.io.File. *file*) .getAbsolutePath)) .getParent) "/core_test.clj"))
+(require
+	'[clojure.test :as test]
+	'[${package}.core-test]
+	)
+(in-ns '${package}.core-test)
+
+(def argv *command-line-args*)
+
+;(apply test/run-all-tests (if argv (map re-pattern argv)
+;    [${symbol_pound}"${package}${symbol_escape}..*"]))
+;(apply test/run-tests (map symbol (if argv argv [])))
+(apply -main argv)

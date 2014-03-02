@@ -1,0 +1,14 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+":"; exec java -Djna.library.path=${symbol_dollar}HOME/.local/lib -cp `cat target/classpath_runtime.txt` clojure.main ${symbol_dollar}0 ${symbol_dollar}@
+":"; exit
+;${symbol_pound}!/usr/bin/env clojure
+
+;(load-file (str (-> (java.io.File. (-> (java.io.File. *file*) .getAbsolutePath)) .getParent) "/Main.clj"))
+(require
+	'[${package}.Main]
+	)
+(in-ns '${package}.Main)
+
+(apply -main *command-line-args*)

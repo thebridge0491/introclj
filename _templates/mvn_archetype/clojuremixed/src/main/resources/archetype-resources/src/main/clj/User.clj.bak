@@ -1,0 +1,14 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+(ns ^{:doc "User record"} ${package}.User
+    ;{:author "${author}"}
+    )
+
+(defrecord User
+    [name num timeIn]          ; fields
+    Object                      ; interface|protocol|Object
+    
+    (toString [this] (pr-str this)))
+    ;(toString [this] (format "{:name %s, :num %d, :timeIn %d}" name num
+    ;        timeIn)))
