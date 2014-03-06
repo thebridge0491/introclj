@@ -22,7 +22,7 @@
 )
 
 (def paths [
-    "new_test" "new_prop"
+    "collections_test" "collections_prop"
     ])
 (doseq [filenm paths] (load filenm))
 
