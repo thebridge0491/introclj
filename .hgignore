@@ -100,3 +100,6 @@ Packages/
 .build/
 Package.resolved
 *.xcworkspace
+
+*/pom.xml
+!bom/pom.xml

@@ -1,11 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.sandbox</groupId>
   <artifactId>introclj.util</artifactId>
   <packaging>jar</packaging>
   <version>0.1.0</version>
   <name>introclj.util</name>
-  <description>Utilites sub-package for Clojure Intro examples project.</description>
+  <description>Utilities sub-package for Clojure Intro examples project.</description>
   <url>http://bitbucket.org/thebridge0491/introclj</url>
   <licenses>
     <license>
@@ -33,7 +34,7 @@
       <plugin>
         <groupId>com.theoryinpractise</groupId>
         <artifactId>clojure-maven-plugin</artifactId>
-        <version>1.3.19</version>
+        <version>1.8.4</version>
         <configuration>
           <sourceDirectories>
             <sourceDirectory>src/main/clj</sourceDirectory>
@@ -43,6 +44,25 @@
           </testSourceDirectories>
         </configuration>
         <extensions>true</extensions>
+      </plugin>
+      <plugin>
+        <groupId>com.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <version>3.3.0</version>
+        <configuration>
+          <sourceDirectories>
+            <sourceDirectory>src/main/java</sourceDirectory>
+          </sourceDirectories>
+        </configuration>
+        <executions>
+          <execution>
+            <id>add-source</id>
+            <goals>
+              <goal>add-source</goal>
+            </goals>
+            <phase>generate-sources</phase>
+          </execution>
+        </executions>
       </plugin>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
@@ -94,22 +114,22 @@
     <dependency>
       <groupId>org.clojure</groupId>
       <artifactId>clojure</artifactId>
-      <version>1.5.1</version>
+      <version>1.10.3</version>
     </dependency>
     <dependency>
       <groupId>org.clojure</groupId>
       <artifactId>tools.reader</artifactId>
-      <version>0.8.3</version>
+      <version>1.3.6</version>
     </dependency>
     <dependency>
       <groupId>org.clojure</groupId>
       <artifactId>tools.logging</artifactId>
-      <version>0.2.6</version>
+      <version>1.2.4</version>
     </dependency>
     <dependency>
       <groupId>org.clojure</groupId>
       <artifactId>test.check</artifactId>
-      <version>0.5.7</version>
+      <version>1.1.1</version>
       <scope>test</scope>
     </dependency>
   </dependencies>

@@ -99,3 +99,5 @@ Packages/
 .build/
 Package.resolved
 *.xcworkspace
+
+pom.xml

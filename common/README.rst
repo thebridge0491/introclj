@@ -3,7 +3,7 @@ Introclj.Util
 .. .rst to .html: rst2html5 foo.rst > foo.html
 ..                pandoc -s -f rst -t html5 -o foo.html foo.rst
 
-Utilites sub-package for Clojure Intro examples project.
+Utilities sub-package for Clojure Intro examples project.
 
 Installation
 ------------
@@ -19,15 +19,15 @@ version control repository clone:
         
         git clone https://bitbucket.org/thebridge0491/introclj.git
 
-build example with maven:
-cd <path> ; mvn [-Djava.library.path=$PREFIX/lib] compile [test]
+build example with maven wrapper:
+cd <path> ; ./mvnw [-Djava.library.path=$PREFIX/lib] compile [clojure:test]
 
-mvn install
+./mvnw install
 
-build example with leiningen:
-cd <path> ; [JVM_OPTS="-Djava.library.path=$PREFIX/lib"] lein compile [test]
+build example with leiningen self-install:
+cd <path> ; [JVM_OPTS="-Djava.library.path=$PREFIX/lib"] ./leinw compile [test]
 
-lein install
+./leinw install
 
 Usage
 -----

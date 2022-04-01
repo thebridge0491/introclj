@@ -28,5 +28,5 @@
     (System/getProperty "java.library.path" ".:/usr/local/lib")))
 )
 
-(def CLib (com.sun.jna.Native/loadLibrary "intro_c-practice"
+(def CLib (com.sun.jna.Native/load "intro_c-practice"
     org.sandbox.introclj.foreignc.IClassic-c))

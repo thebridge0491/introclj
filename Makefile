@@ -5,6 +5,7 @@ help:
 #MAKE = make # (GNU make variants: make (Linux) gmake (FreeBSD)
 
 parent = introclj
+version = 0.1.0
 SUBDIRS = common foreignc api app
 
 .PHONY: all clean compile help install test
@@ -23,21 +24,25 @@ clean: $(SUBDIRS)
 	-rm -fr core* *~ .*~ target/* *.log */*.log
 
 #----------------------------------------
-FMTS ?= tar.gz
-distdir = $(parent)-0.1.0
+FMTS ?= tar.gz,zip
+distdir = $(parent)-$(version)
 
-.PHONY: dist doc lint cover run
-dist: $(SUBDIRS)
+target/$(distdir) : 
 	-@mkdir -p target/$(distdir) ; cp -f exclude.lst target/
 #	#-zip -9 -q --exclude @exclude.lst -r - . | unzip -od target/$(distdir) -
 	-tar --format=posix --dereference --exclude-from=exclude.lst -cf - . | tar -xpf - -C target/$(distdir)
-	
+
+.PHONY: dist doc lint cover run
+distt | target/$(distdir): $(SUBDIRS)
 	-@for fmt in `echo $(FMTS) | tr ',' ' '` ; do \
 		case $$fmt in \
+			7z) echo "### target/$(distdir).7z ###" ; \
+				rm -f target/$(distdir).7z ; \
+				(cd target ; 7za a -t7z -mx=9 $(distdir).7z $(distdir)) ;; \
 			zip) echo "### target/$(distdir).zip ###" ; \
 				rm -f target/$(distdir).zip ; \
 				(cd target ; zip -9 -q -r $(distdir).zip $(distdir)) ;; \
-			*) tarext=`echo $$fmt | grep -e '^tar$$' -e '^tar.xz$$' -e '^tar.bz2$$' || echo tar.gz` ; \
+			*) tarext=`echo $$fmt | grep -e '^tar$$' -e '^tar.xz$$' -e '^tar.zst$$' -e '^tar.bz2$$' || echo tar.gz` ; \
 				echo "### target/$(distdir).$$tarext ###" ; \
 				rm -f target/$(distdir).$$tarext ; \
 				(cd target ; tar --posix -L -caf $(distdir).$$tarext $(distdir)) ;; \
