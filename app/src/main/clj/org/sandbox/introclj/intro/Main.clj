@@ -58,6 +58,23 @@
 (def ^{:private true} rootLogger (LoggerFactory/getLogger "root"))
 (def prog-name (ns-name 'org.sandbox.introclj.intro.Main))
 
+(defn- deserialize-str
+	[data-str fmt]
+	(let [blank-cfg (atom {"fmt" fmt}) yaml (org.yaml.snakeyaml.Yaml.)
+			toml (com.moandjiezana.toml.Toml.)]
+		(cond
+			(or (= "yaml" fmt) (= "json" fmt)) (let [
+					yamlmap (.load yaml data-str)]
+				(merge @blank-cfg yamlmap))
+			(= "toml" fmt) (let [tomlmap (.toMap (.read toml data-str))]
+				(merge @blank-cfg tomlmap))
+			;(= "json" fmt) (let [jsonmap (clojure.data.json/read-str data-str)]
+			;	(merge @blank-cfg jsonmap)
+			;	)
+			)
+		)
+	)
+
 (defn- run-intro
     [progname rsrc-path opts-map]
     (let [re (re-pattern "(?i)quit") m (re-matcher re (get opts-map :name))
@@ -147,46 +164,52 @@
     [& argv]    
 	(def rsrc-path (or (System/getenv "RSRC_PATH")
 		(System/getProperty "rsrcPath" "src/main/resources")))
-    (let [ini-cfg (org.ini4j.Ini.) iniStrm (atom nil)
-            ;jsonStrm (atom nil) yamlStrm (atom nil) jsonobj (atom nil)
-            ;rdr (atom nil) yaml (org.yaml.snakeyaml.Yaml.)
+    (let [ini-cfg (org.ini4j.Ini.) iniStrm (atom nil) ;jsonStrm (atom nil)
+            ;tomlStrm (atom nil) yamlStrm (atom nil)
 			[verbose name num is-expt2] (parse-cmdopts argv)]
         
         (try
 			(reset! iniStrm (io/input-stream (str rsrc-path "/prac.conf")))
-			;(reset! jsonStrm (io/input-stream (str rsrc-path "/prac.json")))
-			;(reset! yamlStrm (io/input-stream (str rsrc-path "/prac.yaml")))
 		(catch java.io.IOException exc0
 			(printf "(exc: %s) Bad env var RSRC_PATH: %s\n" exc0 rsrc-path)
             (flush)
 			
 			(reset! iniStrm (io/input-stream (io/resource "prac.conf")))
-			;(reset! jsonStrm (io/input-stream (io/resource "prac.json")))
-			;(reset! yamlStrm (io/input-stream (io/resource "prac.yaml")))
 			))
-		
 		(try
 			(.load ini-cfg @iniStrm)
-			;(reset! jsonobj (clojure.data.json/read (io/reader @jsonStrm)))
-			;(reset! rdr (javax.json.Json/createReader @jsonStrm))
-			;(reset! jsonobj (.readObject @rdr))
 		(catch java.io.IOException exc
 			;(printf "%s%n" (.getMessage exc))
 			(println (.printStackTrace exc))
 			(System/exit 1)
-			)
-		;(finally
-		;	(if @rdr (.close @rdr)))
-            )
+			))
         
-        (let [;yamlmap (.load yaml @yamlStrm)
+        (comment
+        (try
+			(reset! jsonStrm (io/input-stream (str rsrc-path "/prac.json")))
+			(reset! tomlStrm (io/input-stream (str rsrc-path "/prac.toml")))
+			(reset! yamlStrm (io/input-stream (str rsrc-path "/prac.yaml")))
+		(catch java.io.IOException exc0
+			(printf "(exc: %s) Bad env var RSRC_PATH: %s\n" exc0 rsrc-path)
+            (flush)
+			
+			(reset! jsonStrm (io/input-stream (io/resource "prac.json")))
+			(reset! tomlStrm (io/input-stream (io/resource "prac.toml")))
+			(reset! yamlStrm (io/input-stream (io/resource "prac.yaml")))
+			))
+        )
+        (let [;json-cfg (deserialize-str (String. (.readAllBytes @jsonStrm)) "json")
+                ;toml-cfg (deserialize-str (String. (.readAllBytes @tomlStrm)) "toml")
+                ;yaml-cfg (deserialize-str (String. (.readAllBytes @yamlStrm)) "yaml")
                 tup-arr (vector
 				(vector ini-cfg (get (get ini-cfg "default") "domain")
 					(get (get ini-cfg "user1") "name"))
-				;(vector @jsonobj (get @jsonobj "domain")
-				;	(get (get @jsonobj "user1") "name"))
-				;(vector yamlmap (get yamlmap "domain")
-				;	(get (get yamlmap "user1") "name"))
+				;(vector json-cfg (get json-cfg "domain")
+				;	(get (get json-cfg "user1") "name"))
+				;(vector toml-cfg (get toml-cfg "domain")
+				;	(get (get toml-cfg "user1") "name"))
+				;(vector yaml-cfg (get yaml-cfg "domain")
+				;	(get (get yaml-cfg "user1") "name"))
                     )]
 			(doseq [row tup-arr]
 				(printf "config: %s\n" (get row 0))

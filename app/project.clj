@@ -31,6 +31,7 @@
     [javax.json/javax.json-api "1.1.4"]
     [org.glassfish/javax.json "1.1.4"]
     [org.yaml/snakeyaml "1.30"]
+    [com.moandjiezana.toml/toml4j "0.7.2"]
     ]
     :profiles {
       :test {:dependencies [[org.clojure/test.check "1.1.1"]]}
