@@ -22,7 +22,7 @@
       <defaultValue>${name.substring(0,1).toUpperCase()}${name.substring(1)}</defaultValue>
     </requiredProperty>-->
     <requiredProperty key="description">
-      <defaultValue>Utilites sub-package for Clojure Intro examples project.</defaultValue> </requiredProperty>
+      <defaultValue>Utilities sub-package for Clojure Intro examples project.</defaultValue> </requiredProperty>
     <requiredProperty key="package">
       <defaultValue>${groupId}.${parent}.${name}</defaultValue>
     </requiredProperty>
@@ -55,12 +55,13 @@
   </requiredProperties>
   <fileSets>
     <fileSet filtered="true" packaged="true" encoding="UTF-8">
-      <directory>src/main/java</directory>
-      <includes> <include>**/*.java</include> </includes>
-    </fileSet>
-    <fileSet filtered="true" packaged="true" encoding="UTF-8">
       <directory>src/main/clj</directory>
       <includes> <include>**/*.clj</include> <include>**/*.bak</include>
+        </includes>
+    </fileSet>
+    <fileSet filtered="true" packaged="true" encoding="UTF-8">
+      <directory>src/main/java</directory>
+      <includes> <include>**/*.java</include> <include>**/*.bak</include>
         </includes>
     </fileSet>
     <fileSet filtered="true" encoding="UTF-8">
@@ -75,12 +76,14 @@
         <include>**/*.yaml</include> </includes>
     </fileSet>
     <fileSet filtered="true" packaged="true" encoding="UTF-8">
-      <directory>src/test/java</directory>
-      <includes> <include>**/*.java</include> </includes>
+      <directory>src/test/clj</directory>
+      <includes> <include>**/*.clj</include> <include>**/*.bak</include>
+        </includes>
     </fileSet>
     <fileSet filtered="true" packaged="true" encoding="UTF-8">
-      <directory>src/test/clj</directory>
-      <includes> <include>**/*.bak</include> </includes>
+      <directory>src/test/java</directory>
+      <includes> <include>**/*.java</include> <include>**/*.bak</include>
+        </includes>
     </fileSet>
     <fileSet filtered="true" encoding="UTF-8">
       <directory>src/test/resources</directory>
@@ -100,7 +103,8 @@
     </fileSet>
     <fileSet filtered="true" encoding="UTF-8">
       <directory>choices/testfrwk</directory>
-      <includes> <include>**/*.clj</include> </includes>
+      <includes> <include>**/*.clj</include> <include>**/*.java</include>
+        </includes>
     </fileSet>
     <fileSet filtered="true" encoding="UTF-8">
       <directory>choices/license</directory>
@@ -108,18 +112,31 @@
     </fileSet>
     <fileSet filtered="true" encoding="UTF-8">
       <directory>choices/_parent_build_tool</directory>
-      <includes> <include>**/*.xml</include> <include>**/*.mk</include>
-        </includes>
+      <includes> <include>**/*.txt</include> <include>**/*.xml</include>
+        <include>**/*.mk</include>
+        <include>**/*.rb</include> <include>**/*.new</include>
+        <include>**/*.</include> </includes>
+      <excludes> <exclude>**/depnmgr-ivy.xml</exclude>
+        <exclude>**/depnmgr-maven.xml*</exclude>
+        <exclude>**/build-jacoco.xml*</exclude> </excludes>
     </fileSet>
     <fileSet filtered="true" encoding="UTF-8">
       <directory>choices/build_tool</directory>
-      <includes> <include>**/*.clj</include> <include>**/*.xml</include>
-        <include>**/*.bak</include> <include>**/*.mk</include> </includes>
+      <includes> <include>**/*.txt</include> <include>**/*.xml</include>
+        <include>**/*.mk</include> <include>**/project.clj</include>
+        <include>**/*.rb</include> <include>**/*.new</include>
+        <include>**/*.bak</include> </includes>
+      <excludes> <exclude>**/depnmgr-ivy.xml</exclude>
+        <exclude>**/depnmgr-maven.xml*</exclude>
+        <exclude>**/build-jacoco.xml</exclude>
+        <exclude>**/build-targets.xml</exclude>
+        <exclude>**/rakefile-targets.rb</exclude>
+        <exclude>**/Makefile-targets.mk</exclude> </excludes>
     </fileSet>
     <fileSet filtered="true" encoding="UTF-8">
       <directory>choices/ffi_lib</directory>
-      <includes> <include>**/*.clj</include> <include>**/*.i</include>
-        </includes>
+      <includes> <include>**/*.clj</include> <include>**/*.java</include>
+        <include>**/*.i</include> </includes>
     </fileSet>
     <fileSet filtered="true" encoding="UTF-8">
       <directory>choices/_parent_init</directory>
@@ -136,7 +153,24 @@
     </fileSet>
     <fileSet encoding="UTF-8">
       <directory>choices/_parent_build_tool</directory>
-      <includes> <include>**/*.</include> </includes>
+      <includes> <include>**/*.properties</include> <include>**/*.</include>
+        <include>**/*.bak</include> <include>**/Rakefile</include>
+        <include>**/Makefile</include>
+        <include>**/depnmgr-ivy.xml</include>
+        <include>**/depnmgr-maven.xml*</include>
+        <include>**/build-jacoco.xml*</include> </includes>
+    </fileSet>
+    <fileSet encoding="UTF-8">
+      <directory>choices/build_tool</directory>
+      <includes> <include>**/*.properties</include> <include>**/*.</include>
+        <include>**/Rakefile</include> <include>**/Makefile</include>
+        <include>**/*.sh</include>
+        <include>**/depnmgr-ivy.xml</include>
+        <include>**/depnmgr-maven.xml*</include>
+        <include>**/build-jacoco.xml</include>
+        <include>**/build-targets.xml</include>
+        <include>**/rakefile-targets.rb</include>
+        <include>**/Makefile-targets.mk</include> </includes>
     </fileSet>
     <fileSet encoding="UTF-8">
       <directory>choices/_parent_init</directory>
@@ -146,13 +180,16 @@
     </fileSet>
     <fileSet filtered="true" encoding="UTF-8">
       <directory></directory>
-      <includes> <include>ivy.xml</include> <include>project.clj</include>
+      <includes> <include>ivy.xml</include>
         <include>Makefile-auxffi.mk</include> </includes>
     </fileSet>
     <fileSet encoding="UTF-8">
       <directory></directory>
       <includes> <include>_gitignore</include> <include>_hgignore</include>
         <include>.editorconfig</include> <include>exclude.lst</include>
+        <include>**/_mvn/wrapper/*.properties</include>
+        <include>**/_mvn/wrapper/*.jar</include>
+        <include>**/mvnw*</include> <include>**/leinw*</include>
         </includes>
     </fileSet>
   </fileSets>

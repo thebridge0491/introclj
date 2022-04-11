@@ -1,0 +1,33 @@
+parentregex = "^[a-z][.a-z0-9]+$"
+projectregex = "^[a-z][a-z0-9]+$"
+separator = "."
+joiner = "."
+groupid = "org.sandbox"
+category = false
+parent = "introclj"
+parentdescription = "Multi-package project Intro examples for Clojure."
+project = "util"
+description = "Utilities sub-package for Clojure Intro examples project."
+version = "0.1.0"
+
+repohost = "bitbucket.org"
+repoacct = "imcomputer"
+date = "2013-10-01"
+
+readmeext = ".rst"
+license = "Apache-2.0"
+buildtool = "lein"
+testfrwk = "clojure.test"
+
+ffilib = "none"
+
+skeletondir = "Templates/mustache/skeleton-clj"
+
+[_choices]
+readmeext = [".rst", ".md", ".adoc"]
+license = ["Apache-2.0", "MIT", "BSD-3-Clause", "GPL-3.0+", "ISC", "Unlicense",
+  "Not open source"]
+buildtool = ["lein", "maven"]
+testfrwk = ["clojure.test"]
+executable = ["no", "yes"]
+ffilib = ["none", "jna", "swig"]

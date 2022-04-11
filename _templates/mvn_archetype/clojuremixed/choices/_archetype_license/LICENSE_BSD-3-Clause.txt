@@ -1,6 +1,6 @@
 BSD 3-Clause License
 
-Copyright (c) 2014, thebridge0491
+Copyright (c) 2012, thebridge0491
 
 All rights reserved.
 

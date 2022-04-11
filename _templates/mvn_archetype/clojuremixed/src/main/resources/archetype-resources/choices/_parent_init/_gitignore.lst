@@ -71,8 +71,6 @@ classes/
 javalib/
 .jip*
 .gradle/
-.lein*
-checkouts/
 
 # Python
 __pycache__/

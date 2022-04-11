@@ -6,7 +6,7 @@
     ;(:require
     ;   ;[clojure.tools.logging :as log]
     ;   )
-    (:import 
+    (:import
        [com.sun.jna Library Native]
        )
     ;(:gen-class)
@@ -32,5 +32,5 @@
     (System/getProperty "java.library.path" ".:/usr/local/lib")))
 )
 
-(def CLib (com.sun.jna.Native/loadLibrary "intro_c-practice"
+(def CLib (com.sun.jna.Native/load "intro_c-practice"
     ${package}.IClassic-c))

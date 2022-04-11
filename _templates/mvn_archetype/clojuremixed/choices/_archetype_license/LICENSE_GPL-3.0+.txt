@@ -1,8 +1,8 @@
 GNU GENERAL PUBLIC LICENSE
                       Version 3, 29 June 2007
 
-A Maven archetype template for mixed Clojure project.
-Copyright (C) 2014 thebridge0491
+A Maven archetype template for mixed JVM language project.
+Copyright (C) 2012 thebridge0491
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as

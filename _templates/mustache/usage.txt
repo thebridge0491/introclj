@@ -1,0 +1,103 @@
+Templates for initializing project structure.
+
+Install packages for chosen rendering script:
+  
+  (ruby) gem install [--user-install] mustache
+  
+  [(groovy) grape install com.github.spullara.mustache.java compiler '[0.8.12,)']
+
+  (groovy) grape install com.github.jknack handlebars '[4.1.3,)'
+  
+  (python) pip install [--user] [pystache] chevron
+
+Example usage:
+  
+  ruby render_mustache.rb [--data data.yaml] skeleton-clj [date=2013-10-01]
+  
+  groovy render_mustache.groovy [--data data.yaml] skeleton-clj [--kvset date=2013-10-01]
+  
+  python render_mustache.py [--data data.yaml] skeleton-clj [--kvset date=2013-10-01]
+
+  #resulting project structure
+  
+  echo #---------- ; tree -aF --dirsfirst --matchdirs -I build introjvm.util
+
+#----------
+introjvm.util
+├── .mvn/
+│   └── wrapper/
+│       └── maven-wrapper.{jar,properties}
+├── config/
+│   ├── google_checks.xml
+│   ├── scalastyle_config.xml
+│   └── sun_checks.xml
+├── src/
+│   ├── main/
+│   │   ├── clj/
+│   │   │   └── org/
+│   │   │       └── sandbox/
+│   │   │           └── introjvm/
+│   │   │               └── util/
+│   │   │                   ├── IClassic_c.clj
+│   │   │                   ├── main.sh.bak
+│   │   │                   ├── Person.clj
+│   │   │                   ├── User.clj.bak
+│   │   │                   ├── classic.clj
+│   │   │                   ├── core.clj
+│   │   │                  [└── Main.clj]
+│   │   ├── java/
+│   │   │   └── org/
+│   │   │       └── sandbox/
+│   │   │           └── introjvm/
+│   │   │               └── util/
+│   │   │                   ├── User.java
+│   │   │                   └── package-info.java
+│   │   └── resources/
+│   │       ├── greet.txt
+│   │       ├── log4j.{conf,xml}
+│   │       ├── log4j2.{json,properties,xml,yaml}
+│   │       ├── log4j2_concise.xml
+│   │       ├── logback.groovy.bak
+│   │       ├── logback.xml
+│   │       └── prac.{conf,json,toml,xml,yaml}
+│   └── test/
+│       ├── clj/
+│       │   └── org/
+│       │       └── sandbox/
+│       │           └── introjvm/
+│       │               └── util/
+│       │                   ├── classic_prop.clj
+│       │                   ├── classic_test.clj
+│       │                   ├── core_test.clj
+│       │                   ├── new_prop.clj
+│       │                   ├── new_test.clj
+│       │                   └── ts_main.sh.bak
+│       ├── java/
+│       │   └── org/
+│       │       └── sandbox/
+│       │           └── introjvm/
+│       │               └── util/
+│       │                   └── package-info.java
+│       └── resources/
+│           ├── greet.txt
+│           ├── log4j.{conf,xml}
+│           ├── log4j2.{json,properties,xml,yaml}
+│           ├── log4j2_concise.xml
+│           ├── logback.groovy.bak
+│           ├── logback.xml
+│           └── prac.{conf,json,toml,xml,yaml}
+├── .editorconfig
+├── .{git,hg}ignore
+├── LICENSE
+├── Makefile-auxffi.mk
+├── Makefile-depnmgr.mk
+├── README.rst
+├── build-jacoco.xml
+├── exclude.lst
+├── ivy.xml
+├── leinw
+├── mvnw[.cmd]
+├── pom.xml.bak
+└── project.clj
+
+28 directories, 66 files

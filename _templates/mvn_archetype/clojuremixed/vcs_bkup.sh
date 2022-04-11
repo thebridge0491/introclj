@@ -11,7 +11,7 @@ lang_suf=${lang_suf:-}
 bundle_revsets() {
 	revsets=${@:-'--all'}
 	echo revsets: ${revsets}
-	
+
 	if [ -e ".hg" ] ; then
 		hg bundle --type v1 ${revsets} ${project}${lang_suf}.hg ;
 	elif [ -e ".git" ] ; then
@@ -22,7 +22,7 @@ bundle_revsets() {
 archive_rev() {
 	namePrefix=${1:-${project}} #; revID=${2:-master}
 	opts=${3:-}
-	
+
 	if [ -e ".hg" ] ; then
 		hg archive --rev ${2:-default} ${opts} ${namePrefix}${lang_suf}.zip ;
 	elif [ -e ".git" ] ; then
@@ -33,7 +33,7 @@ archive_rev() {
 
 fix_template() {
 	opts=$@
-	
+
 	if [ -e ".hg" ] ; then
 		hg archive --rev fix_template -I _templates $opts \
 			template${lang_suf}.zip ;
@@ -50,7 +50,7 @@ fix_template() {
 
 changed_files_archive() {
 	namePrefix=${1:-changedFiles} #; revID=${2:-HEAD}
-	
+
 	if [ -e ".hg" ] ; then
 		#filesX=$(hg status --change ${2:-tip} --no-status | sed 's|^| -I |') ;
 		filesX=$(hg log -r ${2:-tip} -T '{join(files, " -I ")}') ;

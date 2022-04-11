@@ -1,0 +1,35 @@
+= org.sandbox.clojuremixed
+:author: thebridge0491
+:email: <thebridge0491-codelab@yahoo.com>
+:revnumber: 0.1.0
+:description: README for org.sandbox.clojuremixed
+:hardbreaks:
+:linkcss:
+//:stylesheet!:
+
+////
+.adoc to .html: asciidoctor -n -a toc -a toclevels=2 foo.adoc
+////
+
+A Leiningen template for mixed Clojure project (choices skeleton: skeleton_clj).
+
+== Installation
+source code tarball download:
+        # [aria2c --check-certificate=false | wget --no-check-certificate | curl -kOL]
+        FETCHCMD='aria2c --check-certificate=false'
+        $FETCHCMD https://bitbucket.org/thebridge0491/clojuremixed/[get | archive]/master.zip
+
+version control repository clone:
+        git clone https://bitbucket.org/thebridge0491/clojuremized.git
+
+cd <path> ; lein install
+
+== Usage
+		// example
+		cd <path> ; [LEIN_JVM_OPTS="-DdataFile=data.yaml -DdataFmt=yaml -Dskeleton=skeleton_clj -Dexecutable=yes"] lein new org.sandbox.clojuremixed <groupid>/<parent>.<module> [--to-dir <parent>.<module> --force]
+
+== Author/Copyright
+Copyright (c) 2014 by thebridge0491 <thebridge0491-codelab@yahoo.com>
+
+== License
+Licensed under the Apache-2.0 License. See LICENSE for details.
