@@ -30,7 +30,7 @@
     
     [javax.json/javax.json-api "1.1.4"]
     [org.glassfish/javax.json "1.1.4"]
-    [org.yaml/snakeyaml "1.30"]
+    [org.snakeyaml/snakeyaml-engine "2.5"]
     [com.moandjiezana.toml/toml4j "0.7.2"]
     ]
     :profiles {

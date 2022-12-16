@@ -60,11 +60,14 @@
 
 (defn- deserialize-str
 	[data-str fmt]
-	(let [blank-cfg (atom {"fmt" fmt}) yaml (org.yaml.snakeyaml.Yaml.)
+	(let [blank-cfg (atom {"fmt" fmt})
+			settings (.build 
+			    (org.snakeyaml.engine.v2.api.LoadSettings/builder))
+			yaml (org.snakeyaml.engine.v2.api.Load. settings)
 			toml (com.moandjiezana.toml.Toml.)]
 		(cond
 			(or (= "yaml" fmt) (= "json" fmt)) (let [
-					yamlmap (.load yaml data-str)]
+					yamlmap (.loadFromString yaml data-str)]
 				(merge @blank-cfg yamlmap))
 			(= "toml" fmt) (let [tomlmap (.toMap (.read toml data-str))]
 				(merge @blank-cfg tomlmap))
